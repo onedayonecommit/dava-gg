@@ -1,13 +1,13 @@
-const { express } = require("./modules/module")
-const { sequelize } = require("./models/index")
-const app = express()
+const { express } = require("./modules/module");
+const { sequelize } = require("./models/index");
+const app = express();
 
 app.listen(80, () => {
-    console.log(`http://localhost on`)
-})
+    console.log(`http://localhost on`);
+});
 
 sequelize
-    .sync({ force: false })
+    .sync({ force: true })
     .then(() => {
         console.log("db connected");
     })

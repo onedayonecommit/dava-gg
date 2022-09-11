@@ -43,5 +43,8 @@ class User extends Sequelize.Model {
             collate: "utf8_general_ci",
         })
     }
+    // static associate(db) {
+    //     db.User.hasMany(db.Freeboard, { foreignkey: "uno", soucekey: "uno" })
+    // }
 }
 module.exports = User

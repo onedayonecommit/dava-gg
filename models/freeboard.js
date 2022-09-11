@@ -36,6 +36,9 @@ class Freeboard extends Sequelize.Model {
             collate: "utf8_general_ci",
         })
     }
+    static associate(db) {
+        db.Freeboard.belongsTo(db.User, { foreignKey: "uno", targetKey: "uno" })
+    }
 }
 
 module.exports = Freeboard
