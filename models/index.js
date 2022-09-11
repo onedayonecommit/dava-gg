@@ -1,37 +1,29 @@
-// 'use strict';
+const dev = require("../config/config")
+const Sequelize = require("sequelize");
 
-// const fs = require('fs');
-// const path = require('path');
-// const Sequelize = require('sequelize');
-// const basename = path.basename(__filename);
-// const env = process.env.NODE_ENV || 'development';
-// const config = require(__dirname + '/../config/config.json')[env];
-// const db = {};
+const Admin = require("./admin")
+const Freeboard = require("./freeboard")
+const Reply = require("./reply")
+const User = require("./user")
 
-// let sequelize;
-// if (config.use_env_variable) {
-//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-// } else {
-//   sequelize = new Sequelize(config.database, config.username, config.password, config);
-// }
+let sequelize = new Sequelize(
+  dev.dev.database,
+  dev.dev.username,
+  dev.dev.password,
+  dev.dev
+)
 
-// fs
-//   .readdirSync(__dirname)
-//   .filter(file => {
-//     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-//   })
-//   .forEach(file => {
-//     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-//     db[model.name] = model;
-//   });
+const db = {}
 
-// Object.keys(db).forEach(modelName => {
-//   if (db[modelName].associate) {
-//     db[modelName].associate(db);
-//   }
-// });
+db.sequelize = sequelize
+db.Admin = Admin
+db.Freeboard = Freeboard
+db.Reply = Reply
+db.User = User
 
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
+Admin.init(sequelize)
+Freeboard.init(sequelize)
+Reply.init(sequelize)
+User.init(sequelize)
 
-// module.exports = db;
+module.exports = db

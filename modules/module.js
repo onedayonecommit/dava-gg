@@ -2,8 +2,6 @@ const express = require("express");
 
 const dot = require("dotenv").config();
 
-const Sequelize = require("sequelize");
-
 const ejs = require("ejs");
 
 const url = require("url");
@@ -23,7 +21,6 @@ const moment = require("moment");
 module.exports = {
     express,
     dot,
-    Sequelize,
     ejs,
     url,
     jwt,
