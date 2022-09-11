@@ -28,5 +28,7 @@ User.init(sequelize)
 
 // User.associate(db)
 Freeboard.associate(db)
+Reply.associate(db)
+
 
 module.exports = db

@@ -26,6 +26,10 @@ class Reply extends Sequelize.Model {
             collate: "utf8_general_ci",
         })
     }
+    static associate(db) {
+        db.Reply.belongsTo(db.Freeboard, { foreignKey: "bno", targetKey: "bno" })
+        db.Reply.belongsTo(db.User, { foreignKey: "nickname", targetKey: "nickname" })
+    }
 }
 
 module.exports = Reply
